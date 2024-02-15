@@ -1,0 +1,21 @@
+get http://localhost:8080/v1/readiness
+Content-Type: application/json
+###
+get http://localhost:8080/v1/err
+Content-Type: application/json
+
+###
+post http://localhost:8080/v1/feeds
+Authorization: ApiKey 
+
+{
+  "name": "The Boot.dev Blog",
+  "url": "https://blog.boot.dev/index.xml"
+}
+
+###
+get http://localhost:8080/v1/feeds
+
+### 
+get http://localhost:8080/v1/posts
+
