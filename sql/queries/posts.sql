@@ -6,4 +6,4 @@ RETURNING *;
 -- name: GetPosts :many
 SELECT * FROM posts
 ORDER BY posts.published_at DESC
-LIMIT $1;
+LIMIT $1 OFFSET $2;

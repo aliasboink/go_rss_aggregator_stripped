@@ -59,7 +59,7 @@ func main() {
 	// v1router.Delete("/feeds", apiCfg.middlewareAuth(apiCfg.handlerDeleteFeed))
 	v1router.Get("/readiness", handlerReadiness)
 	v1router.Get("/err", handlerError)
-	v1router.Get("/posts", apiCfg.handlerGetPosts)
+	v1router.Get("/posts/{offset}", apiCfg.handlerGetPosts)
 
 	r.Mount("/v1", v1router)
 
@@ -68,7 +68,7 @@ func main() {
 		Handler: r,
 	}
 
-	go rssThiefWorker(dbQueries, 10, 10)
+	go rssThiefWorker(dbQueries, 1800, 10)
 
 	log.Printf("Starting server on port %s\n", port)
 	log.Fatal(server.ListenAndServe())
