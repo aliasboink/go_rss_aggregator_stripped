@@ -6,6 +6,6 @@ ARG TARGETARCH
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
   go build -o /bin/scraper .
 
-FROM scratch
+FROM alpine:3.19.1
 COPY --from=builder /bin/scraper /bin/scraper
 CMD ["/bin/scraper"]
